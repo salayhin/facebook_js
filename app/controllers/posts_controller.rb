@@ -1,10 +1,36 @@
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+
+    #client = Twitter::REST::Client.new do |config|
+    #  config.consumer_key        = "0SA42a0JKM6PdD1q0PNCZg"
+    #  config.consumer_secret     = "YV97lqlpZd7T1sNrkDMZOqN9Gnd1pvOxrzwgv9jQuo"
+    #  config.access_token        = "106499488-wdXh967DnNt5e1zW26YBQYqSOCggCtu9SdivrAc8"
+    #  config.access_token_secret = "diKltR3e8H8T9K7fCuZfGxenvgpWsvN5PwdhEyX7tQ"
+    #end
+
+    require "rubygems"
+
+    # Certain methods require authentication. To get your Twitter OAuth credentials,
+    # register an app at http://dev.twitter.com/apps
+    Twitter.configure do |config|
+      config.consumer_key        = "0SA42a0JKM6PdD1q0PNCZg"
+      config.consumer_secret     = "YV97lqlpZd7T1sNrkDMZOqN9Gnd1pvOxrzwgv9jQuo"
+      config.access_token        = "106499488-wdXh967DnNt5e1zW26YBQYqSOCggCtu9SdivrAc8"
+      config.access_token_secret = "diKltR3e8H8T9K7fCuZfGxenvgpWsvN5PwdhEyX7tQ"
+    end
+
+    # Initialize your Twitter client
+    client = Twitter::Client.new
+
+    # Post a status update
+    client.update("I just posted a status update via the Twitter Ruby Gem !")
+    redirect_to request.referer, :notice => 'Tweet successfully posted'
+
   end
 
   # GET /posts/1
