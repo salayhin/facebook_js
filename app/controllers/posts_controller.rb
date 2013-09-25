@@ -20,8 +20,8 @@ class PostsController < ApplicationController
     Twitter.configure do |config|
       config.consumer_key        = "0SA42a0JKM6PdD1q0PNCZg"
       config.consumer_secret     = "YV97lqlpZd7T1sNrkDMZOqN9Gnd1pvOxrzwgv9jQuo"
-      config.access_token        = "106499488-wdXh967DnNt5e1zW26YBQYqSOCggCtu9SdivrAc8"
-      config.access_token_secret = "diKltR3e8H8T9K7fCuZfGxenvgpWsvN5PwdhEyX7tQ"
+      config.oauth_token        = "106499488-wdXh967DnNt5e1zW26YBQYqSOCggCtu9SdivrAc8"
+      config.oauth_token_secret = "diKltR3e8H8T9K7fCuZfGxenvgpWsvN5PwdhEyX7tQ"
     end
 
     # Initialize your Twitter client
